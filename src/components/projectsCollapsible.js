@@ -61,7 +61,7 @@ const projects = [
           <li>
             This was quickly resolved by doing the simplest option (that I
             should have started with) and just looking for a button with a
-            submission related text on select few websites and using an onCLick
+            submission related text on select few websites and using an onClick
             listener. (Submit, Post, Reply, etc.) This let me add compatibility
             that I couldn't personally test until I shared it with a few peers
             who tested it on their LMS for me.
@@ -79,6 +79,9 @@ const CollapsibleRow = ({ project }) => {
   return (
     <>
       <Box display="flex" alignItems="center">
+        <Typography variant="h6" sx={{ textAlign: "left" }}>
+          {project.name}
+        </Typography>
         <IconButton
           aria-label="expand row"
           size="small"
@@ -86,9 +89,6 @@ const CollapsibleRow = ({ project }) => {
         >
           {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
         </IconButton>
-        <Typography variant="h6" sx={{ textAlign: "left" }}>
-          {project.name}
-        </Typography>
       </Box>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <Box margin={1}>
