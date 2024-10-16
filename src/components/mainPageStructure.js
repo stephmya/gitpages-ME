@@ -1,19 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Typography,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Avatar,
-  Link,
+  IconButton,
   Box,
+  Chip,
+  Button,
+  ButtonGroup,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import { LinkedIn, GitHub, Email } from "@mui/icons-material";
 
 const PortfolioPage = () => {
+  const skills = [
+    { name: "JavaScript", category: "Coding Languages" },
+    { name: "C++", category: "Coding Languages" },
+    { name: "Python", category: "Coding Languages" },
+    { name: "Java", category: "Coding Languages" },
+    { name: "Visual Basic", category: "Coding Languages" },
+    { name: "OCAML", category: "Coding Languages" },
+    { name: "Haskell", category: "Coding Languages" },
+    { name: "Rust", category: "Coding Languages" },
+    { name: "mySQL", category: "Coding Languages" },
+    { name: "PostgreSQL", category: "Coding Languages" },
+    { name: "React", category: "Coding Languages" },
+    { name: "Node.js", category: "Coding Languages" },
+    { name: "Express.js", category: "Coding Languages" },
+    { name: "MongoDB", category: "Coding Languages" },
+
+    { name: "FIGMA", category: "Diagramming" },
+    { name: "UMLet", category: "Diagramming" },
+
+    { name: "Microsoft Excel", category: "Miscellaneous" },
+    { name: "MERN", category: "Miscellaneous" },
+    { name: "Material UI", category: "Miscellaneous" },
+    { name: "Chrome Extensions", category: "Miscellaneous" },
+    { name: "Web Development", category: "Miscellaneous" },
+  ];
+
+  const [selectedCategory, setSelectedCategory] = useState("Coding Languages");
+
+  const filteredSkills = skills.filter(
+    (skill) => skill.category === selectedCategory
+  );
+
   return (
     <Grid container spacing={2} style={{ padding: "20px" }}>
       {/* Left Sidebar */}
@@ -25,7 +58,6 @@ const PortfolioPage = () => {
             alignItems: "center",
           }}
         >
-          {/* Social Icons */}
           <Box
             style={{
               display: "flex",
@@ -33,20 +65,116 @@ const PortfolioPage = () => {
               marginBottom: "20px",
             }}
           >
-            <Link
-              href="https://www.linkedin.com/in/stephanie-myalik-8306582a2/"
-              target="_blank"
-              style={{ marginRight: "10px" }}
+            {/* LinkedIn */}
+            <IconButton
+              onClick={() => window.open("https://www.linkedin.com/", "_blank")}
+              style={{ color: "#796D8A", marginRight: "10px" }}
             >
-              <LinkedInIcon fontSize="large" />
-            </Link>
-            <Link href="https://github.com/stephmya" target="_blank">
-              <GitHubIcon fontSize="large" />
-            </Link>
+              <LinkedIn fontSize="large" />
+            </IconButton>
+
+            {/* GitHub */}
+            <IconButton
+              onClick={() =>
+                window.open("https://github.com/stephmya", "_blank")
+              }
+              style={{ color: "#796D8A", marginRight: "10px" }}
+            >
+              <GitHub fontSize="large" />
+            </IconButton>
+
+            {/* Email */}
+            <IconButton
+              onClick={() =>
+                window.open("mailto:your-email@example.com", "_blank")
+              }
+              style={{ color: "#796D8A", marginRight: "10px" }}
+            >
+              <Email fontSize="large" />
+            </IconButton>
+          </Box>
+        </Box>
+
+        <Box>
+          <Typography
+            variant="h6"
+            gutterBottom
+            style={{ fontWeight: 600, color: "#333" }}
+          >
+            Competencies
+          </Typography>
+        </Box>
+        {/* Button group to select category */}
+        <ButtonGroup
+          variant="contained"
+          size="small"
+          sx={{ marginBottom: "20px" }}
+        >
+          <Button
+            onClick={() => setSelectedCategory("Coding Languages")}
+            sx={{
+              backgroundColor:
+                selectedCategory === "Coding Languages" ? "#23054d" : "#655e6e",
+            }}
+          >
+            Coding Languages
+          </Button>
+          <Button
+            onClick={() => setSelectedCategory("Diagramming")}
+            sx={{
+              backgroundColor:
+                selectedCategory === "Diagramming" ? "#23054d" : "#655e6e",
+            }}
+          >
+            Diagramming
+          </Button>
+          <Button
+            onClick={() => setSelectedCategory("Miscellaneous")}
+            sx={{
+              backgroundColor:
+                selectedCategory === "Miscellaneous" ? "#23054d" : "#655e6e",
+            }}
+          >
+            Miscellaneous
+          </Button>
+        </ButtonGroup>
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: "600px",
+            padding: "16px",
+            backgroundColor: "#f5f5f5",
+            borderRadius: "12px",
+            boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+            textAlign: "center",
+          }}
+        >
+          {/* Display skills based on selected category */}
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "12px", // Spacing between chips
+              justifyContent: "center",
+            }}
+          >
+            {filteredSkills.map((skill, index) => (
+              <Chip
+                key={index}
+                label={skill.name}
+                sx={{
+                  backgroundColor: "#6200ea",
+                  color: "white",
+                  fontWeight: "bold",
+                  "&:hover": {
+                    backgroundColor: "#3700b3",
+                  },
+                }}
+              />
+            ))}
           </Box>
         </Box>
       </Grid>
-
       {/* Right Content - Main Section */}
       <Grid item xs={12} md={8}>
         {/* Personal Projects Accordion */}
@@ -108,14 +236,6 @@ const PortfolioPage = () => {
                     </>{" "}
                   </AccordionDetails>
                 </Accordion>
-              </AccordionDetails>
-            </Accordion>
-            <Accordion sx={{ backgroundColor: "#796D8A", color: "white" }}>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography>Project 2</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>Description of Project 2</Typography>
               </AccordionDetails>
             </Accordion>
           </AccordionDetails>
