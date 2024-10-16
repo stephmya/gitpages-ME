@@ -1,7 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Projects from "./components/projectsCollapsible";
-
+import PortfolioPage from "./components/mainPageStructure";
+// import "./styles/background.css";
+// import "/styles/background.html";
+import LinesBackground from "./components/linesBackground";
 function App() {
   return (
     <div className="App">
@@ -19,7 +21,8 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Projects />
+      <LinesBackground />
+      <PortfolioPage />
     </div>
   );
 }
