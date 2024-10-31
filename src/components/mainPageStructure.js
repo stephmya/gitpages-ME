@@ -30,12 +30,15 @@ const PortfolioPage = () => {
     { name: "Node.js", category: "Coding Languages" },
     { name: "Express.js", category: "Coding Languages" },
     { name: "MongoDB", category: "Coding Languages" },
+    { name: "julia", category: "Coding Languages" },
+    { name: "Ruby", category: "Coding Languages" },
 
     { name: "FIGMA", category: "Diagramming" },
     { name: "UMLet", category: "Diagramming" },
 
     { name: "Microsoft Excel", category: "Miscellaneous" },
     { name: "MERN", category: "Miscellaneous" },
+    { name: "MEAN", category: "Miscellaneous" },
     { name: "Material UI", category: "Miscellaneous" },
     { name: "Chrome Extensions", category: "Miscellaneous" },
     { name: "Web Development", category: "Miscellaneous" },
